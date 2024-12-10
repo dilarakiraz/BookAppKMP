@@ -7,7 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import org.dilarakiraz.composempnotes.presentation.book_list.components.BookSearchBar
+import org.dilarakiraz.composempnotes.book.domain.Book
+import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListScreen
+import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListScreenRoot
+import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListState
+import org.dilarakiraz.composempnotes.book.presentation.book_list.books
+import org.dilarakiraz.composempnotes.book.presentation.book_list.components.BookSearchBar
 
 @Preview
 @Composable
@@ -25,4 +30,17 @@ private fun BookSearchBarPreview() {
                 .fillMaxWidth()
         )
     }
+}
+
+
+
+@Preview
+@Composable
+private fun BookListScreenPreview() {
+    BookListScreen(
+        state = BookListState(
+            searchResult = books
+        ),
+        onAction = {}
+    )
 }

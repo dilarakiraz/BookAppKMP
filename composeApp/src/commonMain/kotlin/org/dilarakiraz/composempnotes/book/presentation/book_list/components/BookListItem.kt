@@ -1,4 +1,4 @@
-package org.dilarakiraz.composempnotes.presentation.book_list.components
+package org.dilarakiraz.composempnotes.book.presentation.book_list.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -38,8 +38,8 @@ import bookappkmp.composeapp.generated.resources.Res
 import bookappkmp.composeapp.generated.resources.book_error_2
 import coil3.compose.rememberAsyncImagePainter
 import org.dilarakiraz.composempnotes.book.domain.Book
-import org.dilarakiraz.composempnotes.presentation.LightBlue
-import org.dilarakiraz.composempnotes.presentation.SandYellow
+import org.dilarakiraz.composempnotes.core.presentation.LightBlue
+import org.dilarakiraz.composempnotes.core.presentation.SandYellow
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.round
 
@@ -59,7 +59,9 @@ fun BookListItem(
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth()
-                .height(IntrinsicSize.Min)
+                .height(IntrinsicSize.Min),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Box(
                 modifier = Modifier

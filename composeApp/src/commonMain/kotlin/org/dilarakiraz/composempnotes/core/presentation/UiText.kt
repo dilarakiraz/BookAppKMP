@@ -1,4 +1,4 @@
-package org.dilarakiraz.composempnotes.presentation
+package org.dilarakiraz.composempnotes.core.presentation
 
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.resources.StringResource

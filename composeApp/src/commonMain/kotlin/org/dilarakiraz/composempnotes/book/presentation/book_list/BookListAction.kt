@@ -1,4 +1,4 @@
-package org.dilarakiraz.composempnotes.presentation.book_list
+package org.dilarakiraz.composempnotes.book.presentation.book_list
 
 import org.dilarakiraz.composempnotes.book.domain.Book
 

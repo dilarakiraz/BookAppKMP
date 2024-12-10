@@ -1,4 +1,4 @@
-package org.dilarakiraz.composempnotes.presentation.book_list.components
+package org.dilarakiraz.composempnotes.book.presentation.book_list.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth

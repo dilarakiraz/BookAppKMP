@@ -1,4 +1,4 @@
-package org.dilarakiraz.composempnotes.presentation.book_list.components
+package org.dilarakiraz.composempnotes.book.presentation.book_list.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -26,9 +26,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import bookappkmp.composeapp.generated.resources.Res
 import bookappkmp.composeapp.generated.resources.close_hint
 import bookappkmp.composeapp.generated.resources.search_hint
-import org.dilarakiraz.composempnotes.presentation.DarkBlue
-import org.dilarakiraz.composempnotes.presentation.DesertWhite
-import org.dilarakiraz.composempnotes.presentation.SandYellow
+import org.dilarakiraz.composempnotes.core.presentation.DarkBlue
+import org.dilarakiraz.composempnotes.core.presentation.DesertWhite
+import org.dilarakiraz.composempnotes.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

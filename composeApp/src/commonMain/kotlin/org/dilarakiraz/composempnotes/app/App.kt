@@ -1,8 +1,8 @@
-package org.dilarakiraz.composempnotes
+package org.dilarakiraz.composempnotes.app
 
 import androidx.compose.runtime.*
-import org.dilarakiraz.composempnotes.presentation.book_list.BookListScreenRoot
-import org.dilarakiraz.composempnotes.presentation.book_list.BookListViewModel
+import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListScreenRoot
+import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
