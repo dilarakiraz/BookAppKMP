@@ -5,7 +5,7 @@ import org.dilarakiraz.composempnotes.core.presentation.UiText
 
 data class BookListState(
     val searchQuery: String = "Kotlin",
-    val searchResult: List<Book> = books,
+    val searchResults: List<Book> = emptyList(),
     val favoriteBooks: List<Book> = emptyList(),
     val isLoading: Boolean = false,
     val selectedTabIndex: Int = 0,
