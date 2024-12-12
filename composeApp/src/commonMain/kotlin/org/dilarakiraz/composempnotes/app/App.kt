@@ -1,29 +1,61 @@
 package org.dilarakiraz.composempnotes.app
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import io.ktor.client.engine.HttpClientEngine
 import org.dilarakiraz.composempnotes.book.data.network.KtorRemoteBookDataSource
 import org.dilarakiraz.composempnotes.book.data.repository.DefaultBookRepository
+import org.dilarakiraz.composempnotes.book.domain.Book
 import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListScreenRoot
 import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListViewModel
 import org.dilarakiraz.composempnotes.core.data.HttpClientFactory
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 @Preview
-fun App(engine: HttpClientEngine) {
-    BookListScreenRoot(
-        viewModel = remember {
-            BookListViewModel(
-                bookRepository = DefaultBookRepository(
-                    remoteBookDataSource = KtorRemoteBookDataSource(
-                        httpClient = HttpClientFactory.create(engine)
+fun App() {
+    MaterialTheme {
+        val navController = rememberNavController()
+        NavHost(
+            navController = navController,
+            startDestination = Route.BookGraph
+        ) {
+            navigation<Route.BookGraph>(
+                startDestination = Route.BookList
+            ) {
+                composable<Route.BookList> {
+                    val viewModel = koinViewModel<BookListViewModel>()
+                    BookListScreenRoot(
+                        viewModel = viewModel,
+                        onBookClick = { book ->
+                            navController.navigate(
+                                Route.BookDetail(book.id)
+                            )
+                        }
                     )
-                )
-            )
-        },
-        onBookClick = {
+                }
+                composable<Route.BookDetail> { entry ->
+                    val args = entry.toRoute<Route.BookDetail>()
 
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text("Book detail screen! TheID is ${args.id}")
+                    }
+                }
+            }
         }
-    )
+    }
 }
