@@ -23,22 +23,24 @@ class DefaultBookRepository(
     }
 
     override suspend fun getBookDescription(bookId: String): Result<String?, DataError> {
-        TODO("Not yet implemented")
+        return remoteBookDataSource
+            .getBookDetails(bookId)
+            .map { it.description }
     }
 
 //    override fun getFavoriteBooks(): Flow<List<Book>> {
 //        TODO("Not yet implemented")
 //    }
 
-    override fun isBookFavorite(id: String): Flow<Boolean> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun markAsFavorite(book: Book): EmptyResult<DataError.Local> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun deleteFromFavorites(id: String) {
-        TODO("Not yet implemented")
-    }
+//    override fun isBookFavorite(id: String): Flow<Boolean> {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override suspend fun markAsFavorite(book: Book): EmptyResult<DataError.Local> {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override suspend fun deleteFromFavorites(id: String) {
+//        TODO("Not yet implemented")
+//    }
 }

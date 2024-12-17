@@ -5,6 +5,7 @@ import org.dilarakiraz.composempnotes.book.data.network.RemoteBookDataSource
 import org.dilarakiraz.composempnotes.book.data.repository.DefaultBookRepository
 import org.dilarakiraz.composempnotes.book.domain.BookRepository
 import org.dilarakiraz.composempnotes.book.presentation.SelectedBookViewModel
+import org.dilarakiraz.composempnotes.book.presentation.book_detail.BookDetailViewModel
 import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListViewModel
 import org.dilarakiraz.composempnotes.core.data.HttpClientFactory
 import org.koin.core.module.Module
@@ -21,5 +22,6 @@ val sharedModule = module {
     singleOf(::DefaultBookRepository).bind<BookRepository>()
 
     viewModelOf(::BookListViewModel)
+    viewModelOf(::BookDetailViewModel)
     viewModelOf(::SelectedBookViewModel)
 }

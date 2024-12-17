@@ -1,5 +1,7 @@
 package org.dilarakiraz.composempnotes.app
 
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -21,6 +23,9 @@ import org.dilarakiraz.composempnotes.book.data.network.KtorRemoteBookDataSource
 import org.dilarakiraz.composempnotes.book.data.repository.DefaultBookRepository
 import org.dilarakiraz.composempnotes.book.domain.Book
 import org.dilarakiraz.composempnotes.book.presentation.SelectedBookViewModel
+import org.dilarakiraz.composempnotes.book.presentation.book_detail.BookDetailAction
+import org.dilarakiraz.composempnotes.book.presentation.book_detail.BookDetailScreenRoot
+import org.dilarakiraz.composempnotes.book.presentation.book_detail.BookDetailViewModel
 import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListScreenRoot
 import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListViewModel
 import org.dilarakiraz.composempnotes.core.data.HttpClientFactory
@@ -58,20 +63,35 @@ fun App() {
                         }
                     )
                 }
-                composable<Route.BookDetail> {
+                composable<Route.BookDetail>(
+                    enterTransition = {
+                        slideInHorizontally { initialOffset ->
+                            initialOffset
+                        }
+                    },
+                    exitTransition = {
+                        slideOutHorizontally { initialOffset ->
+                            initialOffset
+                        }
+                    }
+                ) {
                     val selectedBookViewModel =
                         it.sharedKoinViewModel<SelectedBookViewModel>(navController)
+                    val viewModel = koinViewModel<BookDetailViewModel>()
                     val selectedBook by selectedBookViewModel.selectedBook.collectAsStateWithLifecycle()
 
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            "Book detail screen!" +
-                                    "$selectedBook"
-                        )
+                    LaunchedEffect(selectedBook) {
+                        selectedBook?.let {
+                            viewModel.onAction(BookDetailAction.OnSelectedBookChange(it))
+                        }
                     }
+
+                    BookDetailScreenRoot(
+                        viewModel = viewModel,
+                        onBackClick = {
+                            navController.navigateUp()
+                        }
+                    )
                 }
             }
         }
