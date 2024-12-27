@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -44,6 +45,7 @@ import bookappkmp.composeapp.generated.resources.remove_from_favorites
 import coil3.compose.rememberAsyncImagePainter
 import org.dilarakiraz.composempnotes.core.presentation.DarkBlue
 import org.dilarakiraz.composempnotes.core.presentation.DesertWhite
+import org.dilarakiraz.composempnotes.core.presentation.PulseAnimation
 import org.dilarakiraz.composempnotes.core.presentation.SandYellow
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -140,10 +142,10 @@ fun BlurredImageBackground(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-//                            PulseAnimation(
-//                                modifier = Modifier
-//                                    .size(60.dp)
-//                            )
+                            PulseAnimation(
+                                modifier = Modifier
+                                    .size(60.dp)
+                            )
                         }
                         else -> {
                             Box {

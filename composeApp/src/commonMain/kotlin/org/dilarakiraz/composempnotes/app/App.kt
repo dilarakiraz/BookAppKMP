@@ -2,13 +2,11 @@ package org.dilarakiraz.composempnotes.app
 
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavBackStackEntry
@@ -17,18 +15,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
-import io.ktor.client.engine.HttpClientEngine
-import org.dilarakiraz.composempnotes.book.data.network.KtorRemoteBookDataSource
-import org.dilarakiraz.composempnotes.book.data.repository.DefaultBookRepository
-import org.dilarakiraz.composempnotes.book.domain.Book
 import org.dilarakiraz.composempnotes.book.presentation.SelectedBookViewModel
 import org.dilarakiraz.composempnotes.book.presentation.book_detail.BookDetailAction
 import org.dilarakiraz.composempnotes.book.presentation.book_detail.BookDetailScreenRoot
 import org.dilarakiraz.composempnotes.book.presentation.book_detail.BookDetailViewModel
 import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListScreenRoot
 import org.dilarakiraz.composempnotes.book.presentation.book_list.BookListViewModel
-import org.dilarakiraz.composempnotes.core.data.HttpClientFactory
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -44,7 +36,10 @@ fun App() {
             navigation<Route.BookGraph>(
                 startDestination = Route.BookList
             ) {
-                composable<Route.BookList> {
+                composable<Route.BookList>(
+                    exitTransition = { slideOutHorizontally() },
+                    popEnterTransition = { slideInHorizontally() }
+                ) {
                     val viewModel = koinViewModel<BookListViewModel>()
                     val selectedBookViewModel =
                         it.sharedKoinViewModel<SelectedBookViewModel>(navController)
