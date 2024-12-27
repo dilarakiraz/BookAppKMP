@@ -1,14 +1,25 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+# 📚 Book Application
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+This is a book application developed using Kotlin Multiplatform Mobile (KMP). The app allows users to view a list of books on the Home Screen, access a detailed view of each book, search for books, and add them to favorites.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Features
+- **Home Screen**: Displays a list of books.
+- **Detail Screen**: Shows detailed information about each book.
+- **Search Functionality**: Search books by title or author.
+- **Favorites**: Users can add books to their favorites list.
 
+# 📱 Android
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+| **Home Screen** | **Detail Screen** | **Search Screen** | **Favorites Screen** |
+|-----------------|-------------------|-----------------------------|-------------------------------|
+| ![Home Screen](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/android_home.png) | ![Detail Screen](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/android_detail.png) | ![Search Screen](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/android_search.png) | ![Favorites Screen)](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/android_fav.png) |
+
+# 📱 İOS
+| **Home Screen** | **Detail Screen** | **Search Screen** | **Favorites Screen** |
+|-----------------|-------------------|-----------------------------|-------------------------------|
+| ![Home Screen](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/ios_home.png) | ![Detail Screen](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/ios_detail.png) | ![Search Screen](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/ios_search.png) | ![Favorites Screen)](https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/ios_fav.png) |
+
+# 💻 Desktop
+| **Desktop Screen** |
+|--------------------|
+| <img src="https://github.com/dilarakiraz/BookAppKMP/blob/main/ss/desktop.png" width="700"/> |
